@@ -3,7 +3,7 @@ import ast
 import itertools
 from collections import namedtuple
 
-PUNCTUATION = [u'\\', '@', '.', '(', ')']
+PUNCTUATION = ['\\', '.', '(', ')']
 WHITESPACE = list(string.whitespace)
 
 Token = namedtuple('Token', ['type', 'value'])
@@ -247,12 +247,12 @@ class Parser(object):
         expression is an application, abstraction, or variable"""
         if self.token.type == '(':
             return self._application()
-        elif self.token.type in [u'\\', '@']:
+        elif self.token.type == '\\':
             return self._abstraction()
         elif self.token.type == 'SYMBOL':
             return self._variable()
         else:
-            self._error(u'(, \\, @, or SYMBOL')
+            self._error(u'(, \\, or SYMBOL')
 
     def _variable(self):
         """Returns an instance of Variable if the current token is a symbol"""
@@ -279,13 +279,13 @@ class Parser(object):
     def _abstraction(self):
         """Returns an instance of Abstraction if the next series of tokens
         fits the form of a lambda calculus function"""
-        if self.token.type in [u'\\', '@']:
+        if self.token.type == '\\':
             self._advance()
             variable = self._variable()
             self._eat('.')
             return Abstraction(variable, self._expression())
         else:
-            self._error(u'\\ or @')
+            self._error('\\')
 
     def parse(self):
         """Returns an abstract syntax tree if the source correctly fits the

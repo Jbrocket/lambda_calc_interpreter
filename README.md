@@ -14,3 +14,6 @@ to enter a terminal where you can type expressions to be interpreted:
 ```sh
 python src/interpreter.py
 ```
+
+For our sake, lambdas are expression where defined inputs aren't sequential and are separated 
+like this: "\x.\y.xy" rather than "\xy.xy". And, isntead of using a lambda symbol, a '\' is used instead

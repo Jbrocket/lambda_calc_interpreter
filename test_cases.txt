@@ -1,2 +1,12 @@
 (\m.((m \t.\f.t) \x.\t.\f.f) \z.\s.z)
 \t.\f.t
+
+(\x.(z x) t)
+(z t)
+
+(\s.\x.(z x) \y.y)
+\x.(z x)
+
+(\z.(z a) \z.a)
+a
+

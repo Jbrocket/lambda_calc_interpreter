@@ -245,6 +245,7 @@ class Parser(object):
     def _expression(self):
         """Based on the current token, this method decides if the next
         expression is an application, abstraction, or variable"""
+        print(self.token.type)
         if self.token.type == '(':
             return self._application()
         elif self.token.type == '\\':
@@ -369,6 +370,16 @@ def interpret(input_string, print_reductions=False):
 
 if __name__ == '__main__':
     import sys
+    try:
+        fp = open(sys.argv[1])
+        test_cases = []
+        solutions = []
+        for num, line in enumerate(fp.readlines()):
+            pass
+        
+        sys.exit(1)
+    except (IndexError, FileNotFoundError) as e:
+        pass
     if len(sys.argv) > 1:
         interpret(sys.argv[1], print_reductions=True)
     else:
